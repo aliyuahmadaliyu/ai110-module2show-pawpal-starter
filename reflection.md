@@ -4,13 +4,24 @@
 
 **a. Initial design**
 
-- Briefly describe your initial UML design.
-- What classes did you include, and what responsibilities did you assign to each?
+The three core actions a user should be able to perform:
+1. Add a pet by entering its name, species, breed, and age.
+2. Schedule a task (like a walk, feeding, or medication) for a specific pet with a time, duration, and priority.
+3. View todays schedule sorted by time, with warnings if two tasks clash.
+
+Four classes were chosen:
+
+Task holds all the data for a single care activity like the title, time, duration, priority, frequency, completion status, and due date. It is only responsible for its own data and rescheduling itself.
+
+Pet stores the pets info and keeps a list of its tasks. It handles adding and removing tasks from that list.
+
+Owner holds all the pets and gives one place to access every task across all of them.
+
+Scheduler is the brain. It takes an Owner and handles sorting, filtering, conflict detection, and marking tasks complete.
 
 **b. Design changes**
 
-- Did your design change during implementation?
-- If yes, describe at least one change and why you made it.
+No changes yet. This will be updated in Phase 2 once the logic is written.
 
 ---
 
