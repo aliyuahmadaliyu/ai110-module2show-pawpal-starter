@@ -44,14 +44,26 @@ pip install -r requirements.txt
 
 ## 🖥️ Sample Output
 
-Paste a sample of your app's CLI or Streamlit output here so a reader can see what a generated plan looks like:
-
 ```
-# e.g.:
-# Daily plan for Biscuit (Golden Retriever):
-#   08:00 — Morning walk (30 min) [priority: high]
-#   09:00 — Feeding (10 min) [priority: high]
-#   ...
+=============================================
+         Todays Schedule
+=============================================
+  08:00  Morning feeding      [high] [Pending]
+  08:00  Feeding              [high] [Pending]
+  10:00  Grooming             [low] [Pending]
+  12:00  Medication           [high] [Pending]
+  18:00  Evening walk         [high] [Pending]
+
+Conflict check:
+  WARNING: Conflict at 08:00: 'Morning feeding' and 'Feeding'
+
+Biscuits tasks only:
+  18:00  Evening walk
+  08:00  Morning feeding
+  12:00  Medication
+
+After marking Morning feeding complete:
+  is_complete: False  next due: 2026-07-05
 ```
 
 ## 🧪 Testing PawPal+
@@ -67,7 +79,16 @@ pytest --cov
 Sample test output:
 
 ```
-# Paste your pytest output here
+================================================= test session starts ==================================================
+platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
+collected 5 items
+
+tests/test_pawpal.py::test_mark_complete_changes_status PASSED                                                    [ 20%]
+tests/test_pawpal.py::test_add_task_increases_count PASSED                                                        [ 40%]
+tests/test_pawpal.py::test_sort_by_time_returns_chronological_order PASSED                                        [ 60%]
+tests/test_pawpal.py::test_daily_task_reschedules_to_next_day PASSED                                              [ 80%]
+tests/test_pawpal.py::test_conflict_detected_for_same_time PASSED                                                 [100%]
+================================================== 5 passed in 0.06s ===================================================
 ```
 
 ## 📐 Smarter Scheduling
