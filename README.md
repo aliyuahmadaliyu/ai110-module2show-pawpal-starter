@@ -110,12 +110,47 @@ Confidence level: ⭐⭐⭐⭐ — core behaviors and edge cases all pass. The m
 
 ## 📸 Demo Walkthrough
 
-Describe your app in numbered steps so a reader can follow along without watching a video:
+1. Open the app with `streamlit run app.py` and go to http://localhost:8501
+2. Enter your name and click Set Owner to create an owner object in session state
+3. Add two pets by filling in the name, species, breed and age fields and clicking Add Pet
+4. For each pet, add a few tasks with different times, priorities, and frequencies
+5. Give two pets the same time on purpose to see the conflict warning appear
+6. Click Generate Schedule to see all tasks sorted by time in a table
+7. Any conflicts show as yellow warnings above the table
 
-1. <!-- Describe this step -->
-2. <!-- Describe this step -->
-3. <!-- Describe this step -->
-4. <!-- Describe this step -->
-5. <!-- Add more steps as needed -->
+Key scheduler behaviors shown:
+- Tasks always appear in chronological order regardless of the order they were added
+- Conflict warnings appear automatically when two tasks share the same time
+- Daily and weekly tasks reschedule themselves when marked complete
+- You can filter the schedule by pet name or completion status
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or link to a demo video here -->
+Sample CLI output from `python main.py`:
+
+```
+=============================================
+  1. Todays Schedule (sorted by time)
+=============================================
+  08:00  Morning feeding      [high] [Pending]
+  08:00  Feeding              [high] [Pending]
+  10:00  Grooming             [low] [Pending]
+  12:00  Medication           [high] [Pending]
+  18:00  Evening walk         [high] [Pending]
+
+2. Conflict Detection:
+  WARNING: Conflict at 08:00: 'Morning feeding' and 'Feeding'
+
+3. Filter by pet (Biscuit only):
+  18:00  Evening walk
+  08:00  Morning feeding
+  12:00  Medication
+
+4. Filter incomplete tasks only:
+  18:00  Evening walk
+  08:00  Morning feeding
+  12:00  Medication
+  10:00  Grooming
+  08:00  Feeding
+
+5. Recurring task rescheduled after completion:
+  is_complete: False  next due: 2026-07-04
+```

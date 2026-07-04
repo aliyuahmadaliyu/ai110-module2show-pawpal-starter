@@ -21,7 +21,7 @@ Scheduler is the brain. It takes an Owner and handles sorting, filtering, confli
 
 **b. Design changes**
 
-No changes yet. This will be updated in Phase 2 once the logic is written.
+One change I made was moving the reschedule logic into the Task class instead of keeping it all inside the Scheduler. It made more sense for the task to know how to reschedule itself rather than having the Scheduler do it. That kept each class focused on its own job.
 
 ---
 
@@ -29,7 +29,7 @@ No changes yet. This will be updated in Phase 2 once the logic is written.
 
 **a. Constraints and priorities**
 
-The scheduler considers time (HH:MM), priority level (low, medium, high), and task frequency (once, daily, weekly). Time was treated as the most important constraint because a pet owner needs to know what to do and when. Priority is stored on each task but sorting is done by time, not priority, since a "low priority" grooming at 10:00 still needs to happen before a "high priority" walk at 18:00.
+The scheduler considers time (HH:MM), priority level (low, medium, high), and task frequency (once, daily, weekly). Time was treated as the most important constraint because a pet owner needs to know what to do and when. Priority is stored on each task but sorting is done by time, not priority, since a low priority grooming at 10:00 still needs to happen before a high priority walk at 18:00.
 
 **b. Tradeoffs**
 
@@ -41,13 +41,11 @@ The conflict detection only flags tasks that share the exact same time string. I
 
 **a. How you used AI**
 
-- How did you use AI tools during this project (for example: design brainstorming, debugging, refactoring)?
-- What kinds of prompts or questions were most helpful?
+I used AI mostly for generating the initial class skeletons and method stubs after I had already decided what classes I wanted. I also used it to help write the test cases once I knew what behaviors I wanted to test. The most useful prompts were specific ones like asking how to sort a list of objects by a string attribute, or asking what edge cases to cover in a scheduling app.
 
 **b. Judgment and verification**
 
-- Describe one moment where you did not accept an AI suggestion as-is.
-- How did you evaluate or verify what the AI suggested?
+At one point the AI added type hint syntax that was not supported in Python 3.9, using things like list[Task] directly without importing from typing. I caught this when running the code and had to check which Python version the project was using before deciding to keep the syntax since we were on 3.13 where it works fine. I always ran the code myself to verify things actually worked before moving on.
 
 ---
 
@@ -55,13 +53,11 @@ The conflict detection only flags tasks that share the exact same time string. I
 
 **a. What you tested**
 
-- What behaviors did you test?
-- Why were these tests important?
+I tested task completion, task addition, sorting by time, daily and weekly recurrence, conflict detection, filtering by pet name, and edge cases like a pet with no tasks or an owner with no pets. These were important because they cover the core behaviors the scheduler depends on. If any of these broke, the whole app would stop working correctly.
 
 **b. Confidence**
 
-- How confident are you that your scheduler works correctly?
-- What edge cases would you test next if you had more time?
+I am fairly confident the scheduler works correctly for normal use. All 11 tests pass. The main thing I would test next is overlapping task durations, for example a 45-minute task at 08:00 and a task at 08:30 should probably also trigger a conflict warning but currently does not.
 
 ---
 
@@ -69,12 +65,12 @@ The conflict detection only flags tasks that share the exact same time string. I
 
 **a. What went well**
 
-- What part of this project are you most satisfied with?
+The class design worked out well. Keeping Task, Pet, Owner, and Scheduler as separate classes made it easy to add new features without breaking existing ones. Adding a new method to Scheduler did not require touching any other class.
 
 **b. What you would improve**
 
-- If you had another iteration, what would you improve or redesign?
+I would improve the conflict detection to account for task duration, not just start time. Right now two tasks can technically overlap and the app would not catch it. I would also add the ability to remove a pet from the owner's list in the UI.
 
 **c. Key takeaway**
 
-- What is one important thing you learned about designing systems or working with AI on this project?
+The biggest thing I learned is that you have to design the system before writing any code. When I knew exactly what each class was responsible for, writing the actual logic was straightforward. AI is useful for filling in the details but it cannot figure out the design for you, that part still requires thinking it through yourself.
