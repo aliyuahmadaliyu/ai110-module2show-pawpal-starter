@@ -29,13 +29,11 @@ No changes yet. This will be updated in Phase 2 once the logic is written.
 
 **a. Constraints and priorities**
 
-- What constraints does your scheduler consider (for example: time, priority, preferences)?
-- How did you decide which constraints mattered most?
+The scheduler considers time (HH:MM), priority level (low, medium, high), and task frequency (once, daily, weekly). Time was treated as the most important constraint because a pet owner needs to know what to do and when. Priority is stored on each task but sorting is done by time, not priority, since a "low priority" grooming at 10:00 still needs to happen before a "high priority" walk at 18:00.
 
 **b. Tradeoffs**
 
-- Describe one tradeoff your scheduler makes.
-- Why is that tradeoff reasonable for this scenario?
+The conflict detection only flags tasks that share the exact same time string. It does not check whether a 30-minute task at 08:00 overlaps with a task at 08:15. This is a reasonable tradeoff for a simple app because exact time matching is easy to understand and does not require tracking task end times, which would make the scheduler more complex without adding much value for most users.
 
 ---
 

@@ -93,14 +93,12 @@ tests/test_pawpal.py::test_conflict_detected_for_same_time PASSED               
 
 ## 📐 Smarter Scheduling
 
-> Fill in once you've implemented scheduling logic.
-
-| Feature | Method(s) | Notes |
-|---------|-----------|-------|
-| Task sorting | | e.g., by priority, duration |
-| Filtering | | e.g., skip tasks if time runs out |
-| Conflict handling | | e.g., overlapping time slots |
-| Recurring tasks | | e.g., daily vs. weekly |
+| Feature | Method | Notes |
+|---------|--------|-------|
+| Task sorting | `Scheduler.sort_by_time()` | Sorts all tasks by HH:MM time string so the schedule always reads chronologically |
+| Filtering | `Scheduler.filter_tasks()` | Filters by pet name, completion status, or both |
+| Conflict detection | `Scheduler.detect_conflicts()` | Checks if two tasks share the same time and returns a warning string instead of crashing |
+| Recurring tasks | `Task.reschedule()` | When a daily or weekly task is marked complete, the due date moves forward automatically and the task resets to incomplete |
 
 ## 📸 Demo Walkthrough
 
