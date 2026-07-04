@@ -81,15 +81,23 @@ Sample test output:
 ```
 ================================================= test session starts ==================================================
 platform win32 -- Python 3.13.14, pytest-9.1.1, pluggy-1.6.0
-collected 5 items
+collected 11 items
 
-tests/test_pawpal.py::test_mark_complete_changes_status PASSED                                                    [ 20%]
-tests/test_pawpal.py::test_add_task_increases_count PASSED                                                        [ 40%]
-tests/test_pawpal.py::test_sort_by_time_returns_chronological_order PASSED                                        [ 60%]
-tests/test_pawpal.py::test_daily_task_reschedules_to_next_day PASSED                                              [ 80%]
-tests/test_pawpal.py::test_conflict_detected_for_same_time PASSED                                                 [100%]
-================================================== 5 passed in 0.06s ===================================================
+tests/test_pawpal.py::test_mark_complete_changes_status PASSED                                                    [  9%]
+tests/test_pawpal.py::test_add_task_increases_count PASSED                                                        [ 18%]
+tests/test_pawpal.py::test_sort_by_time_returns_chronological_order PASSED                                        [ 27%]
+tests/test_pawpal.py::test_daily_task_reschedules_to_next_day PASSED                                              [ 36%]
+tests/test_pawpal.py::test_conflict_detected_for_same_time PASSED                                                 [ 45%]
+tests/test_pawpal.py::test_pet_with_no_tasks_returns_empty_list PASSED                                            [ 54%]
+tests/test_pawpal.py::test_owner_with_no_pets_returns_no_tasks PASSED                                             [ 63%]
+tests/test_pawpal.py::test_weekly_task_reschedules_to_next_week PASSED                                            [ 72%]
+tests/test_pawpal.py::test_once_task_does_not_reschedule PASSED                                                   [ 81%]
+tests/test_pawpal.py::test_filter_by_pet_name_returns_only_that_pets_tasks PASSED                                 [ 90%]
+tests/test_pawpal.py::test_no_conflicts_when_all_tasks_at_different_times PASSED                                  [100%]
+================================================== 11 passed in 0.12s ==================================================
 ```
+
+Confidence level: ⭐⭐⭐⭐ — core behaviors and edge cases all pass. The main untested area is the Streamlit UI itself.
 
 ## 📐 Smarter Scheduling
 
