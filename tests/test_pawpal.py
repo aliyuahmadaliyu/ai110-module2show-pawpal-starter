@@ -14,7 +14,7 @@ def make_scheduler():
     return Scheduler(owner)
 
 
-# --- Happy path tests ---
+#  Happy path tests 
 
 def test_mark_complete_changes_status():
     task = Task(title="Walk", time="09:00", duration_minutes=20)
@@ -54,7 +54,7 @@ def test_conflict_detected_for_same_time():
     assert "08:00" in conflicts[0]
 
 
-# --- Edge case tests ---
+#  Edge case tests 
 
 def test_pet_with_no_tasks_returns_empty_list():
     pet = Pet(name="Ghost", species="cat")

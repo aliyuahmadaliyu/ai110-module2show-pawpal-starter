@@ -8,9 +8,8 @@ st.title("🐾 PawPal+")
 if "owner" not in st.session_state:
     st.session_state.owner = None
 
-# -----------------------------------------------------------------------
+
 # Step 1: Set up the owner
-# -----------------------------------------------------------------------
 st.header("Owner Setup")
 
 owner_name = st.text_input("Your name", value="Aliyu")
@@ -25,9 +24,7 @@ if st.session_state.owner is None:
 
 owner = st.session_state.owner
 
-# -----------------------------------------------------------------------
 # Step 2: Add a pet
-# -----------------------------------------------------------------------
 st.divider()
 st.header("Add a Pet")
 
@@ -53,9 +50,8 @@ if st.button("Add Pet"):
 if owner.pets:
     st.write("Your pets:", ", ".join(p.name for p in owner.pets))
 
-# -----------------------------------------------------------------------
+
 # Step 3: Add a task
-# -----------------------------------------------------------------------
 st.divider()
 st.header("Schedule a Task")
 
@@ -90,9 +86,8 @@ else:
                     ))
                     st.success(f"Added '{task_title}' for {selected_pet} at {task_time}.")
 
-# -----------------------------------------------------------------------
+
 # Step 4: Generate schedule
-# -----------------------------------------------------------------------
 st.divider()
 st.header("Todays Schedule")
 

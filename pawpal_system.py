@@ -8,10 +8,8 @@ from dataclasses import dataclass, field
 from datetime import date
 
 
-# ---------------------------------------------------------------------------
-# Task
-# ---------------------------------------------------------------------------
 
+# Task
 @dataclass
 class Task:
     """Represents a single pet care activity."""
@@ -39,16 +37,14 @@ class Task:
             self.is_complete = False
 
 
-# ---------------------------------------------------------------------------
-# Pet
-# ---------------------------------------------------------------------------
 
+# Pet
 @dataclass
 class Pet:
     """Stores pet details and owns a list of Tasks."""
 
     name: str
-    species: str                     # dog, cat, or other
+    species: str                     
     breed: str = ""
     age: int = 0
     tasks: list[Task] = field(default_factory=list)
@@ -66,10 +62,8 @@ class Pet:
         return self.tasks
 
 
-# ---------------------------------------------------------------------------
-# Owner
-# ---------------------------------------------------------------------------
 
+# Owner
 @dataclass
 class Owner:
     """Manages one or more pets."""
@@ -89,10 +83,7 @@ class Owner:
         return all_tasks
 
 
-# ---------------------------------------------------------------------------
 # Scheduler
-# ---------------------------------------------------------------------------
-
 class Scheduler:
     """The brain. Retrieves, organizes, and manages tasks across pets."""
 

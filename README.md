@@ -97,7 +97,7 @@ tests/test_pawpal.py::test_no_conflicts_when_all_tasks_at_different_times PASSED
 ================================================== 11 passed in 0.12s ==================================================
 ```
 
-Confidence level: ⭐⭐⭐⭐ — core behaviors and edge cases all pass. The main untested area is the Streamlit UI itself.
+Confidence level:  — core behaviors and edge cases all pass. The main untested area is the Streamlit UI itself.
 
 ## 📐 Smarter Scheduling
 
